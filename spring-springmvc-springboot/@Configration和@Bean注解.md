@@ -57,7 +57,7 @@ public class TestConfiguration {
 ``(2)、@Bean注解默认作用域为单例singleton作用域，可通过@Scope(“prototype”)设置为原型作用域； ``
 ``(3)、既然@Bean的作用是注册bean对象，那么完全可以使用@Component、@Controller、@Service、@Repository等注解注册bean（在需要注册的类上加注解），当然需要配置@ComponentScan注解进行自动扫描。``
 
- 
+
 
 ##### **如果要让一个普通类交给Spring容器管理，通常有以下方法：** 
 
