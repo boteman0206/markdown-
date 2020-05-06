@@ -38,6 +38,8 @@ items.forEach((k,v)->{
 
 ````
 
+``namesMap.entrySet().forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));``
+
 
 
 #### 3: keySet和values
