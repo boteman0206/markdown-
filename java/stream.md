@@ -141,3 +141,4 @@ System.out.println(result);
 // 输出 {papaya=1, orange=1, banana=2, apple=3}
 ```
 
+        .collect(Collectors.groupingBy(
