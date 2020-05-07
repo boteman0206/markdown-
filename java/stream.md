@@ -141,4 +141,34 @@ System.out.println(result);
 // 输出 {papaya=1, orange=1, banana=2, apple=3}
 ```
 
+**对象分类**
+
+```java
+Person user1 = new Person("zhangsan", "78", "beijing");
+Person user2 = new Person("zhangsan", "20", "shanghai");
+Person user3 = new Person("lisi", "67", "beijing");
+List<Person> list = new ArrayList<Person>();
+list.add(user1);
+list.add(user2);
+list.add(user3);
+Map<String, List<Person>> collect = list.stream()
         .collect(Collectors.groupingBy(
+                        Person::getName /*, Collectors.counting()*/
+                )
+        );
+System.out.println(collect);
+// {lisi=[Person(name=lisi, age=67, addr=beijing)], zhangsan=[Person(name=zhangsan, age=78, addr=beijing), Person(name=zhangsan, age=20, addr=shanghai)]}
+```
+
+**嵌套groupby**
+
+```java
+Map<String, Map<String, List<Person>>> collectp
+        = list.stream().collect(
+        Collectors.groupingBy(
+                Person::getAddr, Collectors.groupingBy(Person::getName)
+        )
+);
+// {shanghai={zhangsan=[Person(name=zhangsan, age=20, addr=shanghai)]}, beijing={lisi=[Person(name=lisi, age=67, addr=beijing)], zhangsan=[Person(name=zhangsan, age=78, addr=beijing)]}}
+
+```
