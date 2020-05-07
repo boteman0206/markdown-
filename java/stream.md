@@ -123,5 +123,21 @@ concat = Stream.of("a", "B", "c", "D", "e", "F").
 Stream.iterate(0, n -> n + 3).limit(10). forEach(x -> System.out.print(x + " "));.
 ````
 
+**groupingBy/partitioningBy** 
 
+```java
+List<String> items =
+        Arrays.asList("apple", "apple", "banana",
+                "apple", "orange", "banana", "papaya");
+// Function.identity()返回一个输出跟输入一样的Lambda表达式对象，等价于形如t -> t形式的Lambda表达式
+Map<String, Long> result =
+        items.stream().collect(
+                Collectors.groupingBy(
+                        Function.identity(), Collectors.counting()
+                )
+        );
+System.out.println(result);
+
+// 输出 {papaya=1, orange=1, banana=2, apple=3}
+```
 
