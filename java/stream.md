@@ -174,3 +174,28 @@ Map<String, Map<String, List<Person>>> collectp
 // {shanghai={zhangsan=[Person(name=zhangsan, age=20, addr=shanghai)]}, beijing={lisi=[Person(name=lisi, age=67, addr=beijing)], zhangsan=[Person(name=zhangsan, age=78, addr=beijing)]}}
 
 ```
+#### 按照多个字段分组
+
+```java
+User user = new User("name12", 12, "13");
+User user2 = new User("name19", 19, "13");
+User user3 = new User("name12", 21, "13");
+User user4 = new User("name13", 5, "13");
+List<User> list = Arrays.asList(user, user2, user3, user4);
+//        Map<Boolean, List<User>> collect = list.stream().collect(
+////                Collectors.groupingBy(p -> p.getAge() < 18 && p.getName().equals("name112"))
+////        );
+Map<String, List<User>> collect = list.stream().collect(
+    // 按照多个字段进行分组
+    Collectors.groupingBy(u -> u.getName() + "_" + u.getAddr())
+);
+
+for (Map.Entry<String, List<User>> booleanListEntry : collect.entrySet()) {
+    System.out.println(booleanListEntry.getKey() + "===" + booleanListEntry.getValue());
+    booleanListEntry.getValue().forEach(user22 -> {
+        String name = user22.getName().toUpperCase();
+        System.out.println(name);
+    });
+}
+```
+
