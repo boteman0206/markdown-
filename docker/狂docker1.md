@@ -20,3 +20,25 @@ docker info
 docker --help 
 ````
 
+##### 搜索镜像
+
+`docker search mysql --filter=stars=3000` ： 查找镜像的标星数大于3000的
+
+##### 下载镜像
+
+`docker pull mysql`  : 默认下载最新版本， 可以指定版本 docker pull mysql:5.7
+
+##### 删除镜像
+
+`docker rmi -f 镜像id`
+
+`docker rmi -f $(docker images -aq)` : 批量删除所有的镜像
+
+
+
+
+
+
+
+
+
