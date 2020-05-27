@@ -74,5 +74,25 @@ docker run -d -p 5000:5000 training/webapp python app.py
 	-p : 是容器内部端口绑定到指定的主机端口
 ```
 
+##### 查看容器详情
+
+``docker inspect 容器id``
+
+##### 从容器内拷贝到本地---这个以后会和数据卷的功能联系起来
+
+``docker cp 容器id:/opt/opject .``
+
+
+
+##### 第一次启动tomcat启动访问404
+
+``webapps中目录是空的， 需要拷贝文件到webapps.dist文件到webapps中``
+
+``cp -r /usr/local/tomcat/webapps.dist/ROOT/ /usr/local/tomcat/webapps``
+
+##### 启动es的时候需要限制内存： 否则启动的内存占用非常的大
+
+
+
 
 
