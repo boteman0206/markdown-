@@ -105,7 +105,7 @@ Integer sum = integers.reduce(0, Integer::sum);
 ````java
 // 字符串连接，concat = "ABCD"
 String concat = Stream.of("A", "B", "C", "D").reduce("", String::concat); 
-// 求最小值，minValue = -3.0
+// 求最小值，minValue = -3.0  // 给定初始值求最小值min
 double minValue = Stream.of(-1.5, 1.0, -3.0, -2.0).reduce(Double.MAX_VALUE, Double::min); 
 // 求和，sumValue = 10, 有起始值
 int sumValue = Stream.of(1, 2, 3, 4).reduce(0, Integer::sum);
