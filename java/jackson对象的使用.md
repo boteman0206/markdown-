@@ -10,7 +10,7 @@
 </dependency>
 ```
 
-
+**定义javaBean对象**
 
 ```java
 import lombok.Builder;
