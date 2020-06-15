@@ -1,0 +1,10 @@
+server {
+    listen 80;
+    server_name test.marcpoint.com;
+    access_log  /var/log/nginx/test.log;
+    error_log  /var/log/nginx/test_error.log;
+    location / {
+    	root /opt/project/marcpoint_web;
+	index index.html;
+    }
+}

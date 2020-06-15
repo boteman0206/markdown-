@@ -1,0 +1,24 @@
+server {
+    listen 80;
+    server_name medtrum.marcpoint.com;
+    location / {
+        root /opt/project/medtrum/dist;
+        index index.html;
+        try_files $uri $uri/ /index.html;
+    }
+    location /sys {
+        proxy_pass http://localhost:8080/sys;
+    }
+    location /app {
+        proxy_pass http://localhost:8080/app;
+    }
+    location /h5 {
+        proxy_pass http://localhost:8080/h5;
+    }
+    location /wx {
+        proxy_pass http://localhost:8080/wx;
+    }
+    location /css {
+        proxy_pass http://localhost:8080/css;
+    }
+}

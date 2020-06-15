@@ -1,0 +1,15 @@
+uwsgi_read_timeout 1200;
+uwsgi_send_timeout 120;
+client_max_body_size 50m;
+proxy_read_timeout 1200;
+server {
+    listen 80;
+    server_name test.marcpoint.com;
+    location / {
+	proxy_pass http://127.0.0.1:8005/;
+    }
+    location ^~ /static {
+        root /opt/project/mpPortalLabel/;
+        access_log off;
+    }
+}
