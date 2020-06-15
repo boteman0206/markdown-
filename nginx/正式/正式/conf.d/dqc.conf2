@@ -1,0 +1,16 @@
+server {
+    listen 18732;
+    server_name localhost;
+    location / {
+        proxy_pass http://172.16.1.19:8732;
+        proxy_read_timeout 600;
+    }
+
+    listen 18779;
+    server_name localhost;
+    location / {
+        proxy_pass http://172.16.1.19:8779;
+        proxy_read_timeout 600;
+    }
+
+}
