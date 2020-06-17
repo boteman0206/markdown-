@@ -2,7 +2,7 @@
 
 ![preview](..\picture\v2-dfc3b65b983a82e84420e1335a507e2a_r.jpg)
 
-
+![image-20200617232105795](../picture\image-20200617232116033.png)
 
 ```tex
 1.1: new 出来的对象，是存储在堆中的
