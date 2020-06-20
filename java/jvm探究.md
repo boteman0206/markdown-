@@ -32,3 +32,17 @@ System.out.println(classLoader.getParent().getParent());
 4： 重复步骤3
 ```
 
+##### 4： 栈： 数据结构
+
+```tex
+4.1： 先进后出
+4.2： 栈内存，主管程序的运行，生命周期和线程同步
+4.3： 8大基本类型 + 对象引用 + 实例方法
+```
+
+
+
+##### 5： jvm算法总结
+
+https://juejin.im/post/5d59fd5a6fb9a06b017e4d30
+
