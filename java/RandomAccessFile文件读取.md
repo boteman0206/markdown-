@@ -91,5 +91,11 @@ public class Test {
 
 ```tex
 当RandomAccessFile向指定文件中插入内容时，将会覆盖掉原有内容。如果不想覆盖掉，则需要将原有内容先读取出来，然后先把插入内容插入后再把原有内容追加到插入内容后。
+
+// 确保文件插入到文件的末尾
+RandomAccessFile raf = new RandomAccessFile("file.txt", "rw");
+raf.seek(raf.length());
+raf.write("Data".getBytes());
+raf.close();//原文出自【易百教程】
 ```
 
