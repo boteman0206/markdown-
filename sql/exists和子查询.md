@@ -50,3 +50,41 @@ select * from employees b where exists (
 
 ![1593508774542](../picture\1593508774542.png)
 
+**关联子查询的一个坑**
+
+```sql
+-- 示例1： 关联子查询的方式 实现 
+# 其中sc是一个多对多的课程和学生的关联表
+# 没有学习过任何一门课程的学生信息  注意sc多对多表的放置的顺序
+select *
+from student t1 where not exists(
+      select * from sc t2
+            where  exists (
+                  select * from course t3 where t3.CId=t2.CId   and  t1.SId=t2.SId)
+                       );
+
+-- 示例2： 
+# 和上面的查询结果一样，下面例子中将第二层改为 not exists 会得到学全了所有课程的学生， 但是上面的修改将查询不到任何内容
+-- 原因： 我们可以理解为关联子查询的嵌套为一个for循环的结构， 当使用上面的多对多的外表做第二层的查询条件时， 修改查询为 not exists 其实是将sc中的所有行进行排除，所以第二层得到的条件永远为false, 接着not exists之后永远为true， 因此第一层的得到的not exists永远为假。
+-- 而下面的第二层以course为条件，多以改成not exists之后能得到学全了所有可能的学生。入第三个例子所示。
+
+select *
+from student t1 where not exists(
+      select * from course t2
+            where  exists (
+                  select * from sc t3 where t3.CId=t2.CId
+                                        and  t1.SId=t3.SId)
+                       );
+
+
+-- 示例3： 学全了所有课程的学生 和上面的查询不一样
+select *
+from student t1 where not exists(
+      select * from course t2
+            where not exists (
+                  select * from sc t3 where t3.CId=t2.CId
+                                        and  t1.SId=t3.SId)
+                       );
+
+```
+
