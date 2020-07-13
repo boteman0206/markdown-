@@ -137,3 +137,30 @@ Stream<String> stream = Stream.of("I", "love", "you");
 String joined = stream.collect(Collectors.joining(",", "{", "}"));// "{I,love,you}"
 ```
 
+##### 合并两个list
+
+```java
+Stream<String> stringStream = Stream.of(
+                    Lists.newArrayList("1", "1", "3"),
+                    Lists.newArrayList("1", "2")).flatMap(
+                    Collection::stream
+            );
+            stringStream.forEach(System.out::println);
+
+合并去重
+List<String> result = Stream.of(
+                    Lists.newArrayList("1", "1", "3"),
+                    Lists.newArrayList("1", "2"))
+.flatMap(Collection::stream).distinct().collect(Collectors.toList());
+ System.out.println(result);
+
+
+合并两个map对象
+List<OutputData> result = listOfData1.stream()
+            .flatMap(x -> listOfData2.stream()
+                    .filter(y -> x.getId() == y.getId())
+                    .map(y -> new OutputData(y.getId(), x.getName(), y.getType(), x.getAmount())))
+            .collect(Collectors.toList());
+
+```
+
