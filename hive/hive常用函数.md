@@ -45,3 +45,16 @@ select concat_ws('$',  collect_set(cityname) )  from city group by citytier;
 select collect_list(cityname) from city group by citytier;
 ```
 
+##### explode
+
+```sql
+列转行常用函数 ： 将array转成 1列n行的的格式  只能单独使用
+select explode (array("jack", "name")); 
+
+炸裂函数 配合 lateral view  进行炸裂之后的笛卡尔积 city中的每一行都会和jack， name进行关联
+select * from city lateral view  explode (array("jack", "name"))  temp as cname;
+
+```
+
+![image-20200716221929956](../picture\image-20200716221929956.png)
+
