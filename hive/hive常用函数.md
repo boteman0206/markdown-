@@ -27,3 +27,21 @@ select concat_ws('==', 'vvv',"jiiji") --  	vvv==jiiji
 select concat_ws('==', 'vvv',"jiiji", array('pop', 'lll')) -- 	vvv==jiiji==pop==lll
 ```
 
+##### collect_set
+
+```sql
+属于聚合函数
+将多个集合返回一个set集合 去重 无顺序的
+select collect_set(cityname) from city group by citytier;
+配合concat_ws使用， 类似于group_concat的效果， 因为hive没有这个函数
+select concat_ws('$',  collect_set(cityname) )  from city group by citytier;
+```
+
+##### collect_list
+
+```sql
+属于聚合函数 配合group by使用
+不去重复
+select collect_list(cityname) from city group by citytier;
+```
+
