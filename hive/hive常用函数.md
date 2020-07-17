@@ -71,3 +71,15 @@ group by
   dept_id;
 ```
 
+##### 窗口函数
+
+```sql
+-- 函数说明
+RANK() 排序相同时会重复，总数不会变
+DENSE_RANK() 排序相同时会重复，总数会减少
+ROW_NUMBER() 会根据顺序计算
+
+-- 聚合函数
+count(*)|sum(*)|avg(*)... over (partition by fields.. order by fields ) as nt
+```
+
