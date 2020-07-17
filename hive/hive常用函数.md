@@ -45,7 +45,7 @@ select concat_ws('$',  collect_set(cityname) )  from city group by citytier;
 select collect_list(cityname) from city group by citytier;
 ```
 
-##### explode
+##### explode 和 lateral view
 
 ```sql
 列转行常用函数 ： 将array转成 1列n行的的格式  只能单独使用
@@ -57,4 +57,17 @@ select * from city lateral view  explode (array("jack", "name"))  temp as cname;
 ```
 
 ![image-20200716221929956](../picture\image-20200716221929956.png)
+
+#####  CASE WHEN
+
+```sql
+select 
+  dept_id,
+  sum(case sex when '男' then 1 else 0 end) male_count,
+  sum(case sex when '女' then 1 else 0 end) female_count
+from 
+  emp_sex
+group by
+  dept_id;
+```
 
