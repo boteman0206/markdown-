@@ -64,5 +64,7 @@ row format delimited fields terminated by '\t';
 alter table student2 set tblproperties('EXTERNAL'='TRUE');
 -- 修改外部表student2为内部表
 alter table student2 set tblproperties('EXTERNAL'='FALSE');
+
+-- 注意：('EXTERNAL'='TRUE')和('EXTERNAL'='FALSE')为固定写法，区分大小写！
 ```
 
