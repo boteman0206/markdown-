@@ -61,6 +61,9 @@ select * from city lateral view  explode (array("jack", "name"))  temp as cname;
 #####  CASE WHEN
 
 ```sql
+语法1：CASE a WHEN b THEN c [WHEN d THEN e]* [ELSE f] END
+语法2: CASE WHEN a THEN b [WHEN c THEN d]* [ELSE e] END
+
 select 
   dept_id,
   sum(case sex when '男' then 1 else 0 end) male_count,
@@ -113,10 +116,59 @@ http://lxw1234.com/archives/2015/04/185.htm
 应用场景不了解，可能在一些特殊算法的实现中可以用到吧。
 ```
 
-##### substring
+##### substring/substr 
 
 ```sql
 字符串截取函數
 select substring("2017-09-13", 1, 7); --  起始位置 1  输出：  2017-09
+select substr("2017-09-13", 1, 7);  -- 输出：  2017-09
+```
+
+##### round
+
+```sql
+
+select round(1.23634555, 2);  -- 保留小数后2位
+```
+
+##### cast 
+
+```sql
+类型转换： 将expr转换成type类型 如：cast("1" as BIGINT) 将字符串1转换成了BIGINT类型，如果转换失败将返回NULL
+cast('1' as BIGINT) 
+select cast(12133 as String);
+```
+
+##### COALESCE 
+
+```sql
+返回第一非null的值，如果全部都为NULL就返回NULL  如：COALESCE (NULL,44,55)=44
+```
+
+##### reverse 
+
+```sql
+反转字符串： select reverse("hello");  -- olleh
+```
+
+##### repeat
+
+```SQL
+重复输出n次字符串str： select repeat("hello", 5);
+```
+
+##### split 
+
+```sql
+按照正则表达式pat来分割字符串str,并将分割后的数组字符串的形式返回
+seelct split("hello:world:nihao", ":") -- ["hello","world","nihao"]
+```
+
+##### sentences
+
+```sql
+只能按照空格切分
+select sentences('Hello there! How are you?') 
+-- 	[["Hello","there"],["How","are","you"]]
 ```
 
