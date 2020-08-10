@@ -17,7 +17,7 @@
 
 ##### 创建
 
-```
+```sql
 1.创建表时创建全文索引
 create table fulltext_test (
     id int(11) NOT NULL AUTO_INCREMENT,
@@ -31,5 +31,15 @@ create table fulltext_test (
 create fulltext index content_tag_fulltext on fulltext_test(content,tag);
 3.通过 SQL 语句 ALTER TABLE 创建全文索引
 alter table fulltext_test add fulltext index content_tag_fulltext(content,tag);
+```
+
+##### 使用全文索引
+
+```sql
+和常用的模糊匹配使用 like + % 不同，全文索引有自己的语法格式，使用 match 和 against 关键字，比如
+select * from fulltext_test 
+    where match(content,tag) against('xxx xxx');
+    
+注意： match() 函数中指定的列必须和全文索引中指定的列完全相同，否则就会报错，无法使用全文索引，这是因为全文索引不会记录关键字来自哪一列。如果想要对某一列使用全文索引，请单独为该列创建全文索引。 
 ```
 
