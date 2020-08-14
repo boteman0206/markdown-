@@ -42,6 +42,8 @@ public enum State {
 
 ###### 什么是AQS  <https://zhuanlan.zhihu.com/p/27134110> 
 
+<https://tech.meituan.com/2019/12/05/aqs-theory-and-apply.html> 
+
 ```tex'
 java的内置锁一直都是备受争议的，在JDK 1.6之前，synchronized这个重量级锁其性能一直都是较为低下，虽然在1.6后，进行大量的锁优化策略,但是与Lock相比synchronized还是存在一些缺陷的：虽然synchronized提供了便捷性的隐式获取锁释放锁机制（基于JVM机制），但是它却缺少了获取锁与释放锁的可操作性，可中断、超时获取锁，且它为独占式在高并发场景下性能大打折扣。
 
