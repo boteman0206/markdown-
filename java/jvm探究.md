@@ -46,3 +46,9 @@ System.out.println(classLoader.getParent().getParent());
 
 https://juejin.im/post/5d59fd5a6fb9a06b017e4d30
 
+
+
+##### JVM 的划分及其职能
+
+<https://houbb.github.io/2020/07/19/basic-03-value-pass-ref-pass> 
+
