@@ -2,6 +2,8 @@
 
 ​		<https://juejin.im/post/6844903889678893063> 
 
+​		<https://juejin.im/entry/6844903492683825160#blockingqueue-%E5%AE%9E%E7%8E%B0%E4%B9%8B-linkedblockingqueue> 
+
 ##### 线程池是什么
 
 ```tex
